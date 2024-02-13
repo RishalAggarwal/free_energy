@@ -2,8 +2,9 @@
 
 #SBATCH --job alanine_1ms
 #SBATCH --nodes=1
-#SBATCH --partition=koes_gpu
+#SBATCH --partition=dept_gpu
 #SBATCH --gres=gpu:1
+#SBATCH --constraint=A4500
 #SBATCH -x g001,g019,g012,g013
 
 
@@ -35,9 +36,13 @@ cp $SLURM_SUBMIT_DIR/*.py ${SCRDIR}
 
 cd ${SCRDIR}
 
+source activate openmm
+module load cuda
+export PYTHONUNBUFFERED=1
+
 #setup to copy files back to working dir on exit
 #trap "mv *.png $SLURM_SUBMIT_DIR" EXIT
 trap "mv *.pdb *.dcd $SLURM_SUBMIT_DIR" EXIT
 #run the MD in conda environment
 #openmm is the name of my environment, yours might be struct or rdkit idk whatever
-conda run -n openmm python3 md_simulation.py --pdb alanine-dipeptide.pdb --steps 1000000000000
+python3 md_simulation.py --pdb alanine-dipeptide.pdb --steps 1000000000000
