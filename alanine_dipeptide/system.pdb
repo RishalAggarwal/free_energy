@@ -1,4 +1,4 @@
-REMARK   1 CREATED WITH OPENMM 8.0, 2024-01-10
+REMARK   1 CREATED WITH OPENMM 8.0, 2024-02-05
 HETATM    1  H1  ACE A   1       1.940   1.198   0.662  1.00  0.00           H  
 HETATM    2  CH3 ACE A   1       1.997   2.161   0.158  1.00  0.00           C  
 HETATM    3  H2  ACE A   1       1.316   2.865   0.634  1.00  0.00           H  
